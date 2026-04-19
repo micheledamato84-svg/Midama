@@ -1,0 +1,15 @@
+{
+  "name": "generatore-notizie",
+  "version": "1.0.0",
+  "description": "Genera un file .txt con notizie italiane da ANSA, Sky TG24, Repubblica e altri",
+  "main": "notizie.js",
+  "scripts": {
+    "start": "node notizie.js"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
