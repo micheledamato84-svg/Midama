@@ -3,62 +3,62 @@ name: Build Eseguibili
 on:
   push:
     branches: [ main ]
-  workflow_dispatch:   # permette di avviare manualmente dal sito
+  workflow_dispatch:
 
 jobs:
   build-windows:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: '18'
       - name: Installa dipendenze e pkg
         run: |
           npm install
           npm install -g pkg
       - name: Compila exe Windows
-        run: pkg notizie.js --targets node20-win-x64 --output notizie_windows.exe
+        run: pkg notizie.js --targets node18-win-x64 --output notizie_windows.exe
       - name: Carica artefatto
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: notizie-windows
           path: notizie_windows.exe
 
   build-mac-intel:
-    runs-on: macos-13        # Intel
+    runs-on: macos-13
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: '18'
       - name: Installa dipendenze e pkg
         run: |
           npm install
           npm install -g pkg
       - name: Compila binario Mac Intel
-        run: pkg notizie.js --targets node20-macos-x64 --output notizie_mac_intel
+        run: pkg notizie.js --targets node18-macos-x64 --output notizie_mac_intel
       - name: Carica artefatto
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: notizie-mac-intel
           path: notizie_mac_intel
 
   build-mac-arm:
-    runs-on: macos-latest    # Apple Silicon M1/M2/M3
+    runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: '18'
       - name: Installa dipendenze e pkg
         run: |
           npm install
           npm install -g pkg
       - name: Compila binario Mac Apple Silicon
-        run: pkg notizie.js --targets node20-macos-arm64 --output notizie_mac_arm
+        run: pkg notizie.js --targets node18-macos-arm64 --output notizie_mac_arm
       - name: Carica artefatto
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: notizie-mac-arm
           path: notizie_mac_arm
