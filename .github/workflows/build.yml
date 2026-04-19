@@ -9,8 +9,8 @@ jobs:
   build-windows:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: '18'
       - name: Installa dipendenze e pkg
@@ -20,7 +20,7 @@ jobs:
       - name: Compila exe Windows
         run: pkg notizie.js --targets node18-win-x64 --output notizie_windows.exe
       - name: Carica artefatto
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: notizie-windows
           path: notizie_windows.exe
@@ -28,8 +28,8 @@ jobs:
   build-mac-intel:
     runs-on: macos-13
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: '18'
       - name: Installa dipendenze e pkg
@@ -39,7 +39,7 @@ jobs:
       - name: Compila binario Mac Intel
         run: pkg notizie.js --targets node18-macos-x64 --output notizie_mac_intel
       - name: Carica artefatto
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: notizie-mac-intel
           path: notizie_mac_intel
@@ -47,8 +47,8 @@ jobs:
   build-mac-arm:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: '18'
       - name: Installa dipendenze e pkg
@@ -58,7 +58,7 @@ jobs:
       - name: Compila binario Mac Apple Silicon
         run: pkg notizie.js --targets node18-macos-arm64 --output notizie_mac_arm
       - name: Carica artefatto
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: notizie-mac-arm
           path: notizie_mac_arm
